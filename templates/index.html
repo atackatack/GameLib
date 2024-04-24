@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="dark" data-lt-installed="true">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GameLib</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../assets/style/styles.css"/>
+    <link rel="stylesheet" href="../assets/style/card.css"/>
+    <link rel="stylesheet" href="../assets/style/wheel.css"/>
+    <link rel="stylesheet" href="../assets/style/roulette.css"/>
+    <link rel="stylesheet" href="../assets/style/add_game.css"/>
+    <link rel="stylesheet" href="../assets/style/update_game.css"/>
+    <link rel="icon" type="image/x-icon" href="../assets/static/favicon.ico">
+
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="btn-up btn-up_hide"></div>
+
+<nav class="navbar">
+    <a class="navbar-brand" href="/" id="mainIcon">
+        <img src="https://img.icons8.com/fluency/300/null/xbox-controller--v2.png"/>
+        <h1>GameLib</h1>
+    </a>
+    <div class="statusGrid">
+        <span class="badge d-flex align-items-center p-1 pe-2 text-second-emphasis bg-second-subtle border border-second-subtle rounded-pill">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square-fill ms-1 mt-1 mb-1 me-1" viewBox="0 0 16 16">
+                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16"/>
+            </svg>
+            <div class="text-wrap" style="width: 4rem;">GAME</div>
+            <span class="vr mx-2"></span>
+            <div class="text-wrap" style="width: 2rem;" id="allGameCounter">{{ .allCountGame }}</div>
+        </span>
+        <span class="badge d-flex align-items-center p-1 pe-2 text-dark-emphasis bg-dark-subtle border border-dark-subtle rounded-pill">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square-fill ms-1 mt-1 mb-1 me-1" viewBox="0 0 16 16">
+                <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0m-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+            </svg>
+            <div class="text-wrap" style="width: 4rem;">DONE</div>
+            <span class="vr mx-2"></span>
+            <div class="text-wrap" style="width: 2rem;" id="doneGameCounter">{{ .doneCountGame}}</div>
+        </span>
+    </div>
+</nav>
+
+<div class="d-grid gap-1 mb-2">
+    <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#addGameModal"
+            id="buttonAddGame">
+        Добавить
+    </button>
+</div>
+
+<div class="modal fade" id="addGameModal" tabindex="0" aria-labelledby="addGameModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" id="addGameHeader">
+                <h1 class="modal-title fs-5" id="addGameModalLabel">Добавить новую игру</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="addGameBody">
+                <div class="mb-2">
+                    <input type="text" onkeyup="SearchAddGameHLTB()" class="form-control" name="game"
+                           placeholder="Введите название игры..."
+                           aria-label="Введите название игры..." aria-describedby="button-addon2" autocomplete="off"
+                           id="inputNewGame">
+                </div>
+                <div class="mb-2 ml-2 row">
+                    <div class="col-sm justify-content-center align-items-center">
+                        <label for="flexChecked">Статус</label>
+                        <input class="form-check-input flexChecked" type="checkbox" id="flexChecked">
+                    </div>
+                    <div class="col-sm justify-content-center align-items-center">
+                        <label for="findHltbGrid">Поиск обложки на HLTB</label>
+                        <input class="form-check-input findHltbGrid" type="checkbox" id="findHltbGrid" checked>
+                    </div>
+                </div>
+                <div class="mb-2 gameHLTB" id="gameHLTB" value=0>
+                    <div class="input-group has-validation">
+                        <span class="input-group-text">HLTB</span>
+                        <input type="text" class="form-control" id="searchAddGameHLTB" placeholder="Игра из HLTB"
+                               disabled/>
+                    </div>
+                </div>
+                <div class="mb-2 flex-column flex-md-row align-items-center justify-content-center">
+                    <div id="addListGameHLTB" class="list-group overflow-auto shadow align-items-center"
+                         style="max-height: 400px;">
+                    </div>
+                </div>
+                <div class="mb-2">
+                    <input class="form-control" accept="image/png, image/jpeg" type="file" id="gridForGame">
+                </div>
+            </div>
+            <div class="modal-footer" id="addGameFooter">
+                <button class="btn btn-primary" type="submit" id="buttonAdd">Добавить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateGameModal" tabindex="0" aria-labelledby="updateGameModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" id="updateGameHeader">
+                <h1 class="modal-title fs-5" id="updateGameModalLabel">Обновление игры</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="updateGameBody">
+                Редактирование игры
+            </div>
+            <div class="modal-footer" id="updateGameFooter">
+                <button class="btn btn-primary" type="submit" id="buttonUpdate">Обновить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col">
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#rouletteModal"
+                    id="buttonRoulette">
+                Рулетка
+            </button>
+        </div>
+    </div>
+    <div class="col">
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit" id="buttonRandom">Случайная игра</button>
+        </div>
+    </div>
+    <div class="col">
+        <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="button" data-bs-toggle="modal" data-bs-target="#wheelOfFortuneModal"
+                    id="buttonSpin">
+                Колесо Фортуны
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="rouletteModal" tabindex="0" aria-labelledby="rouletteModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg" id="rouletteModalWindow">
+        <div class="modal-content">
+            <div class="modal-header" id="rouletteHeader">
+                <h1 class="modal-title fs-5" id="rouletteModalLabel">Рулетка</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="rouletteBody">
+                <div class='roulette-wrapper'>
+                    <div class='selector'></div>
+                    <div class='roulette'></div>
+                </div>
+            </div>
+            <div class="modal-footer" id="rouletteFooter">
+                <div class="leftGroup">
+                    <div id="rouletteGameName"></div>
+                </div>
+                <div class="rightGroup">
+                    <button class="btn btn-primary" type="submit" id="buttonUpdateRoulette">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                             class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"></path>
+                            <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"></path>
+                        </svg>
+                    </button>
+                    <button class="btn btn-primary" type="submit" id="buttonSpinRoulette">Крутить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="randomGame" class="alert alert-primary" style="height: 4rem; display: none" role="alert">
+    <p class="text-center" id="labelRandomGame"></p>
+</div>
+
+<div class="modal fade" id="wheelOfFortuneModal" tabindex="0" aria-labelledby="wheelOfFortuneModalLabel"
+     aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header" id="wheelOfFortuneHeader">
+                <h1 class="modal-title fs-5" id="wheelOfFortuneModalLabel">Колесо Фортуны</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" id="wheelOfFortuneBody">
+                <div class="wheel">
+                    <div id="chartWheelOfFortune"></div>
+                </div>
+            </div>
+            <div class="modal-footer" id="wheelOfFortuneFooter">
+                <div id="valueWheelOfFortune">
+                    <h1 class="rollGame">ㅤ</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<hr>
+
+<div class="form-group">
+    <input type="text" class="form-control pull-right" id="search" placeholder="Поиск по таблице"
+           autocomplete="off">
+</div>
+
+<div class="wrapper" id="gameTable">
+    {{ range $key, $val := .gameList }}
+    <div class="card" data-name={{ $val.Name }}>
+        <div class="poster">
+            {{ if $val.Done }}
+            <input class="form-check-input statusCheckBox" type="checkbox"
+                   value={{ $val.ID }} checked>
+            {{ else }}
+            <input class="form-check-input statusCheckBox" type="checkbox"
+                   value={{ $val.ID }}>
+            {{ end }}
+
+            {{ if $val.ImageURL }}
+            <img src={{ $val.ImageURL }} alt={{ $val.Name }}>
+            {{ else }}
+            <img src="../assets/static/tmpGrid.png" alt={{ $val.Name }}>
+            {{ end }}
+            <button type="button" id="buttonDeleteElem"
+                    class="btn btn-sm text-center deleteElemButton" name="buttonDelete"
+                    value={{ $val.ID }}>
+            </button>
+            <button type="button" id="buttonUpdateElem" data-bs-toggle="modal" data-bs-target="#updateGameModal"
+                    class="btn btn-sm text-center updateElemButton" name="buttonUpdate"
+                    value={{ $val.ID }}>
+            </button>
+            {{ if $val.Favorite }}
+            <button class="btn btn-sm text-center favoriteElemButton favoriteFill" id="favoriteElemButton" value={{
+                    $val.ID }}></button>
+            {{ else }}
+            <button class="btn btn-sm text-center favoriteElemButton" id="favoriteElemButton" value={{ $val.ID
+                    }}></button>
+            {{ end }}
+        </div>
+        <div class="details" id="gameDetails">
+            <h1>{{ $val.Name }}</h1>
+            <div class="row">
+                <div class="col-md-6 mx-auto" style="font-size: .75rem">Main: {{ $val.HowLongToBeatMainTime }} H</div>
+                <div class="col-md-6 mx-auto" style="font-size: .75rem">Full: {{ $val.HowLongToBeatFullTime }} H</div>
+            </div>
+        </div>
+    </div>
+    {{ end }}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
+        crossorigin="anonymous"></script>
+<script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="application/javascript" src="../assets/script/Delay.js"></script>
+<script type="application/javascript" src="../assets/script/GameCounter.js"></script>
+<script type="application/javascript" src="../assets/script/SaveGrid.js"></script>
+<script type="application/javascript" src="../assets/script/SearchGameEvent.js"></script>
+<script type="application/javascript" src="../assets/script/SwitchStatusGame.js"></script>
+<script type="application/javascript" src="../assets/script/SwitchFavoriteGame.js"></script>
+<script type="application/javascript" src="../assets/script/RefreshTable.js"></script>
+<script type="application/javascript" src="../assets/script/AddGameEvent.js"></script>
+<script type="application/javascript" src="../assets/script/UpdateGameEvent.js"></script>
+<script type="application/javascript" src="../assets/script/DeleteGameEvent.js.js"></script>
+<script type="application/javascript" src="../assets/script/UpPage.js"></script>
+<script type="application/javascript" src="../assets/script/WheelOfFortune.js"></script>
+<script type="application/javascript" src="../assets/script/Roulette.js"></script>
+<script type="application/javascript" src="../assets/script/GetRandomGame.js"></script>
+<script type="application/javascript" src="../assets/script/SearchGameHLTB.js"></script>
+
+</body>
+</html>

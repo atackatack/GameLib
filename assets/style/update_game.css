@@ -1,0 +1,37 @@
+#updateGameBody.modal-body {
+    padding-block-end: inherit;
+    display: block;
+    overflow: hidden;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+#updateGameNameInput {
+    display: block;
+    width: 100%;
+    height: 40px;
+}
+
+.form-label{
+    margin: 0;
+}
+
+.inputGrid {
+    position: relative;
+    width: 250px;
+    height: 350px;
+    margin: auto;
+    background: #000;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
+}
+
+.inputGrid img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

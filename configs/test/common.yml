@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+storage:
+  host: postgres
+  port: 5432
+  name: gamelib
+  password: P@ssw0rd
+  dbname: gamelib-db
+  sslMode: disable
+
+minio:
+  host: minio
+  port: 9000
+  access_key: "eIh66BvknLnu2lJm7Kdx"
+  secret_key: "ChIwcMebfX6NP3Y9fazOKqXF6pjcysTPEXmuhPqY"
+  image_bucket_name: "image"
+  ssl: false

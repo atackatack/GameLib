@@ -1,0 +1,50 @@
+.wheel {
+    display: block;
+    margin: auto;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+#rollGame {
+    font-size: 5px;
+}
+
+#chart {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    top: 0;
+    left: 0;
+}
+
+#wheelOfFortuneBody.text {
+    font-size: 14px;
+    pointer-events: none;
+    color: white;
+}
+
+#wheelOfFortuneBody.slice.path {
+    border: solid 20px black;
+}
+
+#wheelOfFortuneBody.modal-body {
+    /* подключаем сетку */
+    display: grid;
+    /* ставим всё по центру */
+    place-items: center;
+    /* если что-то не помещается на своё место — скрываем то, что не поместилось */
+    overflow: hidden;
+    min-height: 750px;
+    height: 750px;
+    margin-bottom: 0;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+#wheelOfFortuneFooter.modal-footer {
+    min-height: 60px;
+    max-height: 60px;
+}

@@ -1,0 +1,264 @@
+@import 'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet';
+
+body {
+    font-family: "Inter", sans-serif;
+    overflow-y: auto;
+    margin: 0 1.5em;
+    padding: 1.2rem;
+    min-width: 260px;
+}
+
+#mainIcon {
+    display: grid;
+    align-content: center;
+    grid-template-columns: auto auto auto;
+    grid-gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+#mainIcon > h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+.list-group-item-action > h6 {
+    text-align: center;
+}
+
+#mainIcon > img {
+    width: 4rem;
+    height: 4rem;
+}
+
+*,
+html * /* override x.xhtml.ru style */
+{
+    scrollbar-width: thin;
+    scrollbar-color: #161616 #1c1d20;
+}
+
+*::-webkit-scrollbar,
+html *::-webkit-scrollbar {
+    height: 12px;
+    width: 12px;
+}
+
+*::-webkit-scrollbar-track,
+html *::-webkit-scrollbar-track {
+    background: #161616;
+}
+
+*::-webkit-scrollbar-thumb,
+html *::-webkit-scrollbar-thumb {
+    background-color: #212529;
+    border-radius: 5px;
+    border: 3px solid #161616;
+}
+
+.pagination {
+    --bs-pagination-color: white;
+    --bs-pagination-active-color: white;
+    --bs-pagination-bg: #0D6EFD;
+    --bs-pagination-border-color: #0D6EFD;
+    --bs-pagination-disabled-color: white;
+    --bs-pagination-disabled-bg: #0D6EFD;
+    --bs-pagination-active-bg: #0b5ed7;
+    --bs-pagination-active-border-color: #0b5ed7;
+    --bs-pagination-disabled-border-color: #0D6EFD;
+    --bs-pagination-hover-bg: #0b5ed7;
+    --bs-pagination-hover-color: white;
+    --bs-pagination-hover-border-color: #0b5ed7;
+}
+
+.f32 .flag {
+    vertical-align: middle;
+    margin: -8px 0;
+}
+
+progress {
+    width: 100%;
+}
+
+.btn-up {
+    position: fixed;
+    background-color: #0b5ed7;
+    right: 10px;
+    bottom: 10px;
+    border-radius: 22px;
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+}
+
+.btn-up::before {
+    content: "";
+    text-align: center;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 12px;
+    top: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Cg fill='none' stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 17V4M3 10l7-7 7 7'/%3E%3C/g%3E%3C/svg%3E");
+}
+
+.btn-up_hide {
+    display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .btn-up:hover {
+        background-color: #0b5ed7;
+    }
+}
+
+.table {
+    margin: 0 auto;
+}
+
+.modal-body {
+    /* подключаем сетку */
+    display: grid;
+    /* если что-то не помещается на своё место — скрываем то, что не поместилось */
+    overflow: hidden;
+    margin-bottom: 0;
+}
+
+.modal-lg {
+    width: 750px;
+    height: 450px;
+}
+
+.poster {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+.poster::before {
+    content: '';
+    position: absolute;
+    bottom: -45%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    transition: .3s;
+}
+
+.poster img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .3s;
+}
+
+.poster .form-check-input {
+    position: absolute;
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    z-index: 1;
+}
+
+.poster .deleteElemButton {
+    align-items: center;
+    cursor: pointer;
+    background: rgba(80, 80, 80, 0.6) url("/assets/static/delete.svg") no-repeat center;
+    float: right;
+    position: relative;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+    z-index: 1;
+    height: 2em;
+    width: 2em;
+    overflow: hidden;
+    translate: 0 -4em;
+    transition: .3s;
+}
+
+.poster:hover > .deleteElemButton {
+    translate: 0 0;
+}
+
+.poster .updateElemButton {
+    align-items: center;
+    cursor: pointer;
+    background: rgba(80, 80, 80, 0.6) url("/assets/static/edit.svg") no-repeat center;
+    float: right;
+    position: relative;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+    z-index: 1;
+    height: 2em;
+    width: 2em;
+    overflow: hidden;
+    translate: 0 -4em;
+    transition: .3s;
+}
+
+.poster:hover > .updateElemButton {
+    translate: 0 0;
+}
+
+.poster .favoriteElemButton {
+    align-items: center;
+    cursor: pointer;
+    background: rgba(80, 80, 80, 0.6) url("/assets/static/favorite.svg") no-repeat center;
+    float: right;
+    position: relative;
+    margin-top: 0.5em;
+    margin-right: 0.5em;
+    z-index: 1;
+    height: 2em;
+    width: 2em;
+    overflow: hidden;
+    translate: 0 -4em;
+    transition: .3s;
+}
+
+.poster .favoriteFill {
+    background: rgba(80, 80, 80, 0.6) url("/assets/static/favorite-fill.svg") no-repeat center;
+}
+
+.poster:hover > .favoriteElemButton {
+    translate: 0 0;
+}
+
+.poster > .statusCheckBox:checked {
+    translate: 0 0;
+}
+
+.poster .statusCheckBox {
+    margin-top: 0.5em;
+    margin-left: 0.5em;
+    height: 1.65em;
+    width: 1.65em;
+    transition: .3s;
+    translate: 0 -4em;
+}
+
+.poster:hover > .statusCheckBox {
+    translate: 0 0;
+}
+
+#labelRandomGame {
+    margin: 0;
+}
+
+.leftGroup {
+    float: left;
+}
+
+.rightGroup {
+    float: right;
+}
+
+.statusGrid {
+    margin-left: 2em;
+}
