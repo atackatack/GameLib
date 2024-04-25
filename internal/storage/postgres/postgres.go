@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/jmoiron/sqlx"
 	"log"
+	_ "github.com/lib/pq"
 )
 
 type Storage struct {
