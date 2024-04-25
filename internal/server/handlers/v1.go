@@ -21,11 +21,7 @@ func (h *Handler) MainPage(ctx *gin.Context) {
 		return
 	}
 
-	allCount, err := actions.GetAllCountGame(ctx, h.Storage)
-	if err != nil {
-		ctx.JSON(http.StatusBadRequest, web.ErrorResponse(err))
-		return
-	}
+	allCount := len(base)
 
 	doneCount, err := actions.GetDoneCountGame(ctx, h.Storage)
 	if err != nil {

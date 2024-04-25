@@ -2,8 +2,8 @@ package postgres
 
 import (
 	"fmt"
-	"github.com/jmoiron/sqlx"
 	"log"
+	"github.com/jmoiron/sqlx"
 	_ "github.com/lib/pq"
 )
 
