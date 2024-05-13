@@ -73,6 +73,9 @@ func GetRandomGame(ctx *gin.Context, done bool, storage *postgres.Storage) (*ent
 	return postgres.GetRandomGame(ctx, done, storage.DataBase)
 }
 
+func GetFavoriteGame(ctx *gin.Context, favorite bool, storage *postgres.Storage) (*entities.Game, error) {
+	return postgres.GetFavoriteGame(ctx, favorite, storage.DataBase)
+}
 func GetRandomListGames(ctx *gin.Context, done bool, storage *postgres.Storage) ([]*entities.Game, error) {
 	return postgres.GetRandomListGames(ctx, done, storage.DataBase)
 }

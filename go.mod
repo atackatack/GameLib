@@ -7,6 +7,7 @@ require (
 	github.com/forbiddencoding/howlongtobeat v0.0.0-20240416182337-bc86055c3594
 	github.com/gin-gonic/gin v1.9.1
 	github.com/jmoiron/sqlx v1.4.0
+	github.com/lib/pq v1.10.9
 	github.com/minio/minio-go/v7 v7.0.69
 	github.com/spf13/viper v1.18.2
 )

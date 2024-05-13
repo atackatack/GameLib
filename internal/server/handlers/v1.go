@@ -93,6 +93,20 @@ func (h *Handler) GetRandomGame(ctx *gin.Context) {
 	})
 }
 
+func (h *Handler) GetRandomByFavorite(ctx *gin.Context) {
+	favorite := ctx.GetBool("favorite")
+	favorite = !favorite
+	randomGame, err := actions.GetFavoriteGame(ctx, favorite, h.Storage)
+	if err != nil {
+		ctx.JSON(http.StatusBadRequest, web.ErrorResponse(err))
+		return
+	}
+
+	ctx.JSON(http.StatusOK, gin.H{
+		"data": randomGame,
+	})
+}
+
 func (h *Handler) GetRandomListGames(ctx *gin.Context) {
 	done := ctx.GetBool("done")
 	image := ctx.GetBool("image")

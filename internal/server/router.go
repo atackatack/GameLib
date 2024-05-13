@@ -44,6 +44,7 @@ func (s *Server) configureRoutes() *gin.Engine {
 
 				gameGroup.GET("/random", h.GetRandomGame)
 				gameGroup.GET("/random/list", h.GetRandomListGames)
+				gameGroup.GET("/random/favorite", h.GetRandomByFavorite)
 
 				gameGroup.PUT("/reverse/status/:id", h.ReverseDoneStatus)
 				gameGroup.PUT("/reverse/favorite/:id", h.ReverseFavoriteStatus)

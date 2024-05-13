@@ -287,6 +287,33 @@ func GetRandomGame(_ *gin.Context, done bool, repo *sqlx.DB) (*entities.Game, er
 	return &game, nil
 }
 
+func GetFavoriteGame(_ *gin.Context, favorite bool, repo *sqlx.DB) (*entities.Game, error) {
+	rows, err := sq.Select(GamesMainCols...).
+		From(GamesTabler).
+		Where(sq.Eq{FavoriteCol: favorite}).
+		OrderBy("random()").
+		Limit(1).
+		PlaceholderFormat(sq.Dollar).
+		RunWith(repo.DB).Query()
+	defer rows.Close()
+
+	if err != nil {
+		return nil, err
+	}
+
+	var game entities.Game
+	for rows.Next() {
+		if err := rows.Scan(
+			&game.Name,
+			&game.Done,
+		); err != nil {
+			return nil, err
+		}
+	}
+
+	return &game, nil
+}
+
 func GetRandomListGames(_ *gin.Context, done bool, repo *sqlx.DB) ([]*entities.Game, error) {
 	rows, err := sq.Select(GamesMainCols...).
 		From(GamesTabler).
