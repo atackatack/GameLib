@@ -123,7 +123,7 @@
     </div>
 </div>
 
-<div class="row mb-3">
+<div class="row mb-4">
     <div class="col">
         <div class="d-grid gap-2">
             <button class="btn btn-primary" type="submit" data-bs-toggle="modal" data-bs-target="#rouletteModal"
@@ -135,6 +135,11 @@
     <div class="col">
         <div class="d-grid gap-2">
             <button class="btn btn-primary" type="submit" id="buttonRandom">Случайная игра</button>
+        </div>
+    </div>
+    <div class="col">
+	    <div class="d-grid gap-2">
+            <button class="btn btn-primary" type="submit" id="buttonRandomFav">Случайная игра по избранным</button>
         </div>
     </div>
     <div class="col">
@@ -184,6 +189,10 @@
 <div id="randomGame" class="alert alert-primary" style="height: 4rem; display: none" role="alert">
     <p class="text-center" id="labelRandomGame"></p>
 </div>
+<div id="randomFavGame" class="alert alert-primary" style="height: 4rem; display: none" role="alert">
+    <p class="text-center" id="labelRandomFavGame"></p>
+</div>
+
 
 <div class="modal fade" id="wheelOfFortuneModal" tabindex="0" aria-labelledby="wheelOfFortuneModalLabel"
      aria-hidden="true">
@@ -277,6 +286,7 @@
 <script type="application/javascript" src="../assets/script/WheelOfFortune.js"></script>
 <script type="application/javascript" src="../assets/script/Roulette.js"></script>
 <script type="application/javascript" src="../assets/script/GetRandomGame.js"></script>
+<script type="application/javascript" src="../assets/script/GetRandomGameFav.js"></script>
 <script type="application/javascript" src="../assets/script/SearchGameHLTB.js"></script>
 
 </body>
